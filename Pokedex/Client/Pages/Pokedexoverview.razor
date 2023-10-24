@@ -1,0 +1,54 @@
+﻿@page "/pokemons"
+@inject HttpClient Http
+
+
+
+
+        @if (pokemons == null)
+        {
+            <p>Loading...</p>
+       
+        }
+        else
+        {
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Pokedex number</th>
+                <th>Name</th>
+                <th>Primary type</th>
+                <th>Secondary type</th>
+                <th>Ability</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var p in pokemons)
+            {
+                <tr>
+                    <td>@p.pId</td>
+                    <td>@p.pName</td>
+                    <td>@p.type1</td>
+                    <td>@p.type2 </td>
+                    <td>@p.abilities</td>
+                </tr>
+            }
+            
+    </tbody>
+</table>
+        }
+
+
+
+@code {
+    private Pokemon[]? pokemons;
+
+    protected override async Task OnInitializedAsync()
+    {
+   
+        pokemons = await Http.GetFromJsonAsync<Pokemon[]>("api/Pokemons");
+        //StateHasChanged();
+    }
+
+
+}
