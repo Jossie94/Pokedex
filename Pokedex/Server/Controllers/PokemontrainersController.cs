@@ -15,7 +15,9 @@ namespace Pokedex.Server.Controllers
     public class PokemontrainersController : ControllerBase
     {
         private readonly Pokemondb _context;
+        
 
+        private readonly ILogger<PokemontrainersController> _logger;
         public PokemontrainersController(Pokemondb context)
         {
             _context = context;

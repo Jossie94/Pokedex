@@ -1,0 +1,46 @@
+﻿@page "/newpokemon"
+@inject HttpClient Http
+@using Pokedex.Shared.Models
+@using System.Net.Http.Json
+<link rel="stylesheet" href="" />
+<!-- Define the form with the model -->
+<h1>Add a New Pokémon</h1>
+<form method="post" @onsubmit="AddPokemon" class="form-container">
+    <div>
+        <label for="pName">Name:</label>
+        <input type="text" id="pName" @bind="addPokemon.pName">
+    </div>
+    <div>
+        <label for="type1">Type 1:</label>
+        <input type="text" id="type1" @bind="addPokemon.type1">
+    </div>
+    <div>
+        <label for="type2">Type 2:</label>
+        <input type="text" id="type2" @bind="addPokemon.type2">
+    </div>
+    <div>
+        <label for="abilities">Abilities:</label>
+        <input type="text" id="abilities" @bind="addPokemon.abilities">
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+
+@code {
+    private Pokemon addPokemon = new Pokemon();
+
+    private async Task AddPokemon()
+    {
+        var response = await Http.PostAsJsonAsync("api/Pokemons", addPokemon);
+
+        if (response.IsSuccessStatusCode)
+        {
+            // Handle a successful response, e.g., show a success message
+            Console.WriteLine("Pokemon added successfully!");
+        }
+        else
+        {
+            // Handle an error response, e.g., show an error message
+            Console.WriteLine("Failed to add Pokemon.");
+        }
+    }
+}
