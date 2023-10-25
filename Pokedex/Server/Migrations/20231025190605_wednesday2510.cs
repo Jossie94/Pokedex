@@ -5,7 +5,7 @@
 namespace Pokedex.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class tuesday24 : Migration
+    public partial class wednesday2510 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -33,6 +33,7 @@ namespace Pokedex.Server.Migrations
                     type1 = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     type2 = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     abilities = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    pokepic = table.Column<byte[]>(type: "varbinary(max)", maxLength: 1048576, nullable: false),
                     PokemontrainerTid = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>

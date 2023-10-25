@@ -12,6 +12,7 @@ namespace Pokedex.Shared.Models
         public string type1 { get; set; } = null!;
         public string type2 { get; set; }
         public string abilities { get; set; }
+        public byte[] pokepic { get; set; }
 
     }
 }

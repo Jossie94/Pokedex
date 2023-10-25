@@ -12,8 +12,8 @@ using Pokedex.Server.Models;
 namespace Pokedex.Server.Migrations
 {
     [DbContext(typeof(Pokemondb))]
-    [Migration("20231024204406_tuesday24")]
-    partial class tuesday24
+    [Migration("20231025190605_wednesday2510")]
+    partial class wednesday2510
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace Pokedex.Server.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Pokedex.Server.Models.Pokemon", b =>
+            modelBuilder.Entity("Pokedex.Shared.Models.Pokemon", b =>
                 {
                     b.Property<int>("pId")
                         .ValueGeneratedOnAdd()
@@ -44,6 +44,11 @@ namespace Pokedex.Server.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<byte[]>("pokepic")
+                        .IsRequired()
+                        .HasMaxLength(1048576)
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<string>("type1")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -59,7 +64,7 @@ namespace Pokedex.Server.Migrations
                     b.ToTable("Pokemons");
                 });
 
-            modelBuilder.Entity("Pokedex.Server.Models.Pokemontrainer", b =>
+            modelBuilder.Entity("Pokedex.Shared.Models.Pokemontrainer", b =>
                 {
                     b.Property<int>("Tid")
                         .ValueGeneratedOnAdd()
@@ -76,14 +81,14 @@ namespace Pokedex.Server.Migrations
                     b.ToTable("PokemonTrainers");
                 });
 
-            modelBuilder.Entity("Pokedex.Server.Models.Pokemon", b =>
+            modelBuilder.Entity("Pokedex.Shared.Models.Pokemon", b =>
                 {
-                    b.HasOne("Pokedex.Server.Models.Pokemontrainer", null)
+                    b.HasOne("Pokedex.Shared.Models.Pokemontrainer", null)
                         .WithMany("Pokemons")
                         .HasForeignKey("PokemontrainerTid");
                 });
 
-            modelBuilder.Entity("Pokedex.Server.Models.Pokemontrainer", b =>
+            modelBuilder.Entity("Pokedex.Shared.Models.Pokemontrainer", b =>
                 {
                     b.Navigation("Pokemons");
                 });

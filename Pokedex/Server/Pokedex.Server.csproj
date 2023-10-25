@@ -28,5 +28,9 @@
     <ProjectReference Include="..\Shared\Pokedex.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pics\" />
+  </ItemGroup>
+
 
 </Project>
