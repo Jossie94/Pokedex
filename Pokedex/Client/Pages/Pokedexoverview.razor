@@ -1,6 +1,9 @@
 ﻿@page "/pokemons"
 @inject HttpClient Http
-
+@using Pokedex.Shared.Models
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Web
+<link rel="stylesheet" href="/css/Pokemon.css" />
 
 
 
@@ -14,24 +17,32 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Pokedex number</th>
-                <th>Name</th>
-                <th>Primary type</th>
-                <th>Secondary type</th>
-                <th>Ability</th>
+                <th class="table-th">Pokedex number</th>
+                <th class="table th">Name</th>
+ 
             </tr>
         </thead>
         <tbody>
 
             @foreach (var p in pokemons)
             {
+                var link = $"display/{p.pId}";
                 <tr>
+                    <td>@p.pId</td>
+                    <td>
+                        <!-- Use NavLink to navigate to the DisplayPokemon component -->
+                        <NavLink href="@link" class="nav-link">
+                            @p.pName
+                        </NavLink>
+                    </td>
+                </tr>
+                @* <tr>
                     <td>@p.pId</td>
                     <td>@p.pName</td>
                     <td>@p.type1</td>
                     <td>@p.type2 </td>
                     <td>@p.abilities</td>
-                </tr>
+                </tr> *@
             }
             
     </tbody>

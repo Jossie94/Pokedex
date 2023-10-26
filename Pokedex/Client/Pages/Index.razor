@@ -2,16 +2,25 @@
 @inject HttpClient Http
 @using Pokedex.Shared.Models
 <PageTitle>Index</PageTitle>
+<link rel="stylesheet" href="" />
+<h1 class="welcome-heading">Welcome, @trainerName</h1>
+<div class="content-container">
+    
+    @if (trainerName == null)
+    {
+        <p>Loading...</p>
 
-@if (trainerName == null)
-        {
-    <p>Loading...</p>
+    }
+    else
+    {
+        <img src="/Image/pikachu_eevee.jpg" alt="Logo" class="centered-image" />
+    }
 
-}
-else
-{
-    <h1>Welcome, @trainerName</h1>
-}
+    
+
+
+</div>
+
 
 
 @code {

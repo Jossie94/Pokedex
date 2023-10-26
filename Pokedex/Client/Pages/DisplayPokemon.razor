@@ -1,0 +1,65 @@
+﻿@page "/display/{id:int}"
+@inject HttpClient Http
+@using Microsoft.Extensions.Logging;
+@using Pokedex.Shared.Models
+
+
+
+        @if (pokemon == null)
+{
+    <h3></h3>
+            <p>Loading...</p>
+       
+        }
+        else
+{
+    <h3>@pokemon.pName</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Pokedex number</th>
+                <th>Name</th>
+                <th>Primary Type</th>
+                <th>Secondary Type</th>
+                <th>Ability</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            
+                
+                <tr>
+        <td>@pokemon.pId</td>
+        <td>@pokemon.pName</td>
+        <td>@pokemon.type1</td>
+        <td>@pokemon.type2 </td>
+        <td>@pokemon.abilities</td>
+             
+                
+        </tr>
+           
+            
+
+        </tbody>
+        
+    </table>
+    <img src="data:image/png;base64,@Convert.ToBase64String(pokemon.pokepic)" alt="@pokemon.pName" />
+}
+
+@code {
+
+    private Pokemon pokemon;
+
+
+    [Parameter]
+    public int Id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        
+            pokemon = await Http.GetFromJsonAsync<Pokemon>($"api/Pokemons/{Id}");
+        
+
+    }
+} 

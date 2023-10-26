@@ -9,6 +9,9 @@ using Microsoft.Extensions.Logging;
 using NuGet.Protocol;
 using Pokedex.Server.Models;
 using Pokedex.Shared.Models;
+using System.Web;
+
+
 
 namespace Pokedex.Server.Controllers
 {
@@ -18,35 +21,20 @@ namespace Pokedex.Server.Controllers
     {
         private readonly Pokemondb _context;
 
-        private readonly Pokemonservice pokemonservice;
+       
         
         private readonly ILogger<PokemonsController> _logger;
 
-        public PokemonsController(Pokemonservice service)
-        {
-            pokemonservice = service;
-
-        }
-        [HttpPost]
-        public IActionResult CreatePokemonWithImage([FromBody] Pokemon model)
-        {
-            // Validate and process the input model
-            // ...
-
-            // Convert the uploaded image to bytes (e.g., model.ImageData)
-            // ...
-
-            pokemonservice.SavePokemonWithImage(model.pName, model.pokepic);
-
-            return Ok("Pokemon with image saved.");
-        }
+        
+        
+        
         public PokemonsController(Pokemondb context, ILogger<PokemonsController> logger)
         {
             _context = context;
             _logger = logger;
         }
 
-        
+       
 
         // GET: api/Pokemons
         [HttpGet]

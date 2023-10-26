@@ -1,0 +1,27 @@
+﻿.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* CSS styles for the "Welcome" heading */
+.welcome-heading {
+    font-size: 60px;
+    color: #333;
+    text-align: center;
+}
+
+/* CSS styles for the centered image */
+.centered-image {
+    width: 1000px;
+    height: 500px;
+}
+
+/* CSS styles for the loading message (optional) */
+.loading {
+    font-size: 18px;
+    color: #888;
+    text-align: center;
+}

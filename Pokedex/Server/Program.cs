@@ -13,6 +13,12 @@ builder.Services.AddDbContext<Pokemondb>(opt => opt.UseSqlServer(builder.Configu
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<Pokemondb>();
+    dbContext.Database.EnsureCreated();
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

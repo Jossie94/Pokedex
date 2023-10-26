@@ -1,5 +1,6 @@
 ﻿@page "/newpokemon"
 @inject HttpClient Http
+@using Microsoft.AspNetCore.Components.Forms
 @using Pokedex.Shared.Models
 @using System.Net.Http.Json
 <link rel="stylesheet" href="" />
@@ -22,11 +23,22 @@
         <label for="abilities">Abilities:</label>
         <input type="text" id="abilities" @bind="addPokemon.abilities">
     </div>
+    @* <div>
+        <label for="pokepic"Picture:</label>
+        <input type"file" id="pokepic" @onchange="HandleFileSelected" />
+    </div> *@
     <button class="btn btn-primary" type="submit">Submit</button>
 </form>
 
 @code {
     private Pokemon addPokemon = new Pokemon();
+
+    // private IFileListEntry selectedFile;
+
+    // private void HandleFileSelected(InputFileChangeEventArgs e)
+    // {
+    //     selectedFile = e.File;
+    // }
 
     private async Task AddPokemon()
     {

@@ -1,0 +1,26 @@
+﻿/* pokemons.css */
+
+/* Style the table */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    /* Style the table headers */
+    .table th {
+        background-color: #19217d;
+        color: #b4932a;
+        padding: 8px;
+        text-align: left;
+    }
+
+/* Style the NavLink */
+.nav-link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+    /* Style the NavLink on hover */
+    .nav-link:hover {
+        text-decoration: underline;
+    }
